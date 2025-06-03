@@ -1,0 +1,10 @@
+tasks:
+  - command: >
+      pip install -r requirements.txt &&
+      uvicorn main:app --host 0.0.0.0 --port 8000 --reload &
+      streamlit run streamlit_app.py --server.port 8501 --server.headless true
+ports:
+  - port: 8000
+    onOpen: ignore
+  - port: 8501
+    onOpen: open-preview
