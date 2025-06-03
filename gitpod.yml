@@ -1,8 +1,11 @@
+# gitpod.yml
 tasks:
   - command: >
       pip install -r requirements.txt &&
+      echo "BACKEND_URL=$(gp url 8000)/upload-excel/" >> ~/.env &&
       uvicorn main:app --host 0.0.0.0 --port 8000 --reload &
       streamlit run streamlit_app.py --server.port 8501 --server.headless true
+
 ports:
   - port: 8000
     onOpen: ignore
